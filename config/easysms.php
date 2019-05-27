@@ -1,4 +1,5 @@
 <?php
+
 return [
     // HTTP 请求的超时时间（秒）
     'timeout' => 5.0,
@@ -21,7 +22,7 @@ return [
         'aliyun' => [
             'access_key_id' => env('ALIYUN_ACCESS_KEY_ID'),
             'access_key_secret' => env('ALIYUN_ACCESS_KEY_SECRET'),
-            'sign_name' => env('ALIYUN_SIGN_NAME')
+            'sign_name' => env('ALIYUN_SIGN_NAME'),
         ],
     ],
 ];
