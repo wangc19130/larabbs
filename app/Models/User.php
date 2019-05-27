@@ -15,7 +15,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
     use Traits\ActiveUserHelper;
     use HasRoles;
     use MustVerifyEmailTrait;
-
+    
     use Notifiable {
         notify as protected laravelNotify;
     }
@@ -35,7 +35,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
     }
 
     protected $fillable = [
-        'name', 'email', 'password', 'introduction', 'avatar',
+        'name', 'phone', 'email', 'password', 'introduction', 'avatar',
     ];
 
     protected $hidden = [

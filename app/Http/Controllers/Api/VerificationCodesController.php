@@ -13,6 +13,14 @@ class VerificationCodesController extends Controller
         $phone = $request->phone;
         if (!app()->environment('production')) {
             $code = '1234';
+            $key = 'verificationCode_'.str_random(15);
+            $expiredAt = now()->addMinutes(10);
+            // 缓存验证码 10分钟过期。
+            \Cache::put($key, ['phone' => $phone, 'code' => $code], $expiredAt);
+            return $this->response->array([
+                'key' => $key,
+                'expired_at' => $expiredAt->toDateTimeString(),
+            ])->setStatusCode(201);
         } else {
             // 生成4位随机数，左侧补0
             $code = str_pad(random_int(1, 9999), 4, 0, STR_PAD_LEFT);
